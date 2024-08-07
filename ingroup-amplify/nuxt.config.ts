@@ -5,8 +5,10 @@ export default defineNuxtConfig({
   nitro: {
     output: {
         dir: '.output',
-        serverDir: '.output/server',
+        serverDir: '.output/compute',
         publicDir: '.output/public'
     }
-}
+  },
+  ssr: true
+
 })
