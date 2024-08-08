@@ -8,9 +8,13 @@ applications:
         build:
           commands:
             - npm run build
+            - echo "Build completed, listing .output directory:"
             - ls -R .output
+            - echo "Creating compute/default directory:"
             - mkdir -p .output/compute/default
+            - echo "Copying server file:"
             - cp .output/server/index.mjs .output/compute/default/server.js
+            - echo "Listing compute/default directory:"
             - ls -R .output/compute/default
       artifacts:
         baseDirectory: .output
