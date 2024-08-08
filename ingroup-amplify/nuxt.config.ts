@@ -10,5 +10,12 @@ export default defineNuxtConfig({
       serverDir: '.output/server',
       publicDir: '.output/public'
     }
+  },
+  app: {
+    baseURL: '/',
+    buildAssetsDir: '/_nuxt/'
+  },
+  routeRules: {
+    '/**': { ssr: true }
   }
 })
