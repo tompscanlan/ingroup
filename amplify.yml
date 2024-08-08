@@ -1,0 +1,23 @@
+version: 1
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            - cd ingroup-amplify
+            - npm ci
+    build:
+      commands:
+        - npm run build
+    artifacts:
+      baseDirectory: ingroup-amplify/.output 
+      files:
+        - '**/*'
+      cache:
+        paths:
+          - ingroup-amplify/node_modules/**/*
+  # Add this section to specify the server file
+  serverless:
+    - functionName: serverHandler
+      handlerFile: .output/server/index.mjs
+  appRoot: ingroup-amplify  # Specify the subdirectory of your Nuxt app
