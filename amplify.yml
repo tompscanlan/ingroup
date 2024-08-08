@@ -19,7 +19,6 @@ applications:
         paths:
           - .nuxt/cache/**/*
           - node_modules/**/*
-    appRoot: ingroup-amplify
   - backend:
       phases:
         build:
