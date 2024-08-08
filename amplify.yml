@@ -5,7 +5,8 @@ applications:
         preBuild:
           commands:
             - npm ci
-            - npm run generate:serverjs
+            - mkdir -p .output/compute/default
+            - echo "export default function(event, context) { return require('../server/index.mjs').default.handler(event, context) }" > .output/compute/default/server.js
         build:
           commands:
             - npm run build

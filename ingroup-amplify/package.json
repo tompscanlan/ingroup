@@ -7,9 +7,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "generate:serverjs": "mkdir -p .output/compute/default && echo \"export default function(event, context) { return require('../server/index.mjs').default.handler(event, context) }\" > .output/compute/default/server.js"
-
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "nuxt": "^3.12.4",
