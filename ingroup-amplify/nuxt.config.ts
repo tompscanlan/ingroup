@@ -3,12 +3,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   nitro: {
+    preset: 'aws-lambda',
     output: {
-        dir: '.output',
-        serverDir: '.output/server',
-        publicDir: '.output/public'
+      dir: '.output',
+      serverDir: '.output/server',
+      publicDir: '.output/public'
     }
   },
-  ssr: true
+  // ssr: true
 
 })
