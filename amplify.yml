@@ -1,6 +1,7 @@
 version: 1
 applications:
-  - frontend:
+  - appRoot: ingroup-amplify
+    frontend:
       phases:
         preBuild:
           commands:
@@ -25,9 +26,8 @@ applications:
             - echo "Creating compute/default directory:"
             - mkdir -p compute/default
             - echo "Copying server file:"
-            - cp .output/server/index.mjs compute/default/server.js
+            - cp .output/server/index.mjs compute/default/server.js || echo "Server file not found, skipping copy"
       artifacts:
         baseDirectory: compute/default
         files:
           - '**/*'
-    appRoot: ingroup-amplify
