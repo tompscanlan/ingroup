@@ -5,14 +5,15 @@ applications:
       phases:
         preBuild:
           commands:
-            - npm ci
+            - nvm use 18 && node --version
+            - corepack enable && npx --yes nypm install
         build:
           commands:
-            - npm run build:lambda
+            - pnpm build
       artifacts:
         baseDirectory: .output
         files:
-          - '**/*'
+          - "**/*"
       cache:
         paths:
           - node_modules/**/*
@@ -30,14 +31,5 @@ applications:
               - '# Execute build commands'
         artifacts:
           baseDirectory: .output
-          files:
-            - '**/*'
-      backend:
-        phases:
-          build:
-            commands:
-              - '# Execute backend build commands'
-        artifacts:
-          baseDirectory: compute/default
           files:
             - '**/*'

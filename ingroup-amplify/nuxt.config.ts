@@ -4,11 +4,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
   nitro: {
-    preset: 'aws-lambda',
-    output: {
-      dir: '.output',
-      serverDir: '.output/server',
-      publicDir: '.output/public'
+    
+    awsAmplify: {
+      // catchAllStaticFallback: true,
+      // imageOptimization: { "/_image", cacheControl: "public, max-age=3600, immutable" },
+      // imageSettings: { ... },
     }
   },
   app: {
