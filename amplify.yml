@@ -10,12 +10,6 @@ applications:
             - npm run build
             - echo "Build completed, listing .output directory:"
             - ls -R .output
-            - echo "Creating compute/default directory:"
-            - mkdir -p .output/compute/default
-            - echo "Copying server file:"
-            - cp .output/server/index.mjs .output/compute/default/server.js
-            - echo "Listing compute/default directory:"
-            - ls -R .output/compute/default
       artifacts:
         baseDirectory: .output
         files:
@@ -25,3 +19,15 @@ applications:
           - .nuxt/cache/**/*
           - node_modules/**/*
     appRoot: ingroup-amplify
+  - backend:
+      phases:
+        build:
+          commands:
+            - echo "Creating compute/default directory:"
+            - mkdir -p compute/default
+            - echo "Copying server file:"
+            - cp .output/server/index.mjs compute/default/server.js
+      artifacts:
+        baseDirectory: compute/default
+        files:
+          - '**/*'
