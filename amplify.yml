@@ -5,9 +5,9 @@ applications:
         preBuild:
           commands:
             - npm ci
+            - npm run generate:serverjs
         build:
           commands:
-            - npm run generate:serverjs
             - npm run build
       artifacts:
         baseDirectory: .output
