@@ -8,7 +8,7 @@ applications:
             - npm ci
         build:
           commands:
-            - npm run build
+            - npm run build:lambda
       artifacts:
         baseDirectory: .output
         files:
@@ -18,9 +18,12 @@ applications:
           - node_modules/**/*
     backend:
       phases:
+        preBuild:
+          commands:
+            - npm ci
         build:
           commands:
-            - npm run build
+            - npm run build:lambda
       artifacts:
         baseDirectory: .output
         files:
