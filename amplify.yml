@@ -16,15 +16,28 @@ applications:
       cache:
         paths:
           - node_modules/**/*
-    backend:
-      phases:
-        preBuild:
-          commands:
-            - npm ci
-        build:
-          commands:
-            - npm run build:lambda
-      artifacts:
-        baseDirectory: .output
-        files:
-          - '**/*'
+    customHeaders:
+      - pattern: '**/*'
+        headers:
+          - key: 'Cache-Control'
+            value: 'no-store'
+    buildSpec: |
+      version: 1
+      frontend:
+        phases:
+          build:
+            commands:
+              - '# Execute build commands'
+        artifacts:
+          baseDirectory: .output
+          files:
+            - '**/*'
+      backend:
+        phases:
+          build:
+            commands:
+              - '# Execute backend build commands'
+        artifacts:
+          baseDirectory: compute/default
+          files:
+            - '**/*'
