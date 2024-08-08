@@ -4,20 +4,18 @@ applications:
       phases:
         preBuild:
           commands:
-            - cd ingroup-amplify
             - npm ci
-    build:
-      commands:
-        - npm run build
-    artifacts:
-      baseDirectory: ingroup-amplify/.output 
-      files:
-        - '**/*'
+        build:
+          commands:
+            - npm run build
+            - mkdir -p .output/compute/default
+            - echo "export default function(event, context) { return require('../server/index.mjs').default.handler(event, context) }" > .output/compute/default/server.js
+      artifacts:
+        baseDirectory: .output
+        files:
+          - '**/*'
       cache:
         paths:
-          - ingroup-amplify/node_modules/**/*
-  # Add this section to specify the server file
-  serverless:
-    - functionName: serverHandler
-      handlerFile: .output/server/index.mjs
-  appRoot: ingroup-amplify  # Specify the subdirectory of your Nuxt app
+          - .nuxt/cache/**/*
+          - node_modules/**/*
+    appRoot: ingroup-amplify
