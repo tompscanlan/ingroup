@@ -9,50 +9,19 @@ applications:
         build:
           commands:
             - npm run build
-            - echo "Build completed, listing .output directory:"
-            - ls -R .output
       artifacts:
         baseDirectory: .output
         files:
           - '**/*'
       cache:
         paths:
-          - .nuxt/cache/**/*
           - node_modules/**/*
     backend:
       phases:
         build:
           commands:
-            - echo "Creating compute/default directory:"
-            - mkdir -p compute/default
-            - echo "Copying server file:"
-            - cp .output/server/index.mjs compute/default/server.js || echo "Server file not found, skipping copy"
+            - npm run build
       artifacts:
-        baseDirectory: compute/default
+        baseDirectory: .output
         files:
           - '**/*'
-    customHeaders:
-      - pattern: '**/*'
-        headers:
-          - key: 'Cache-Control'
-            value: 'no-store'
-    buildSpec: |
-      version: 1
-      frontend:
-        phases:
-          build:
-            commands:
-              - '# Execute build commands'
-        artifacts:
-          baseDirectory: .output
-          files:
-            - '**/*'
-      backend:
-        phases:
-          build:
-            commands:
-              - '# Execute backend build commands'
-        artifacts:
-          baseDirectory: compute/default
-          files:
-            - '**/*'
