@@ -9,7 +9,5 @@ export default defineNuxtConfig({
       serverDir: '.output/server',
       publicDir: '.output/public'
     }
-  },
-  // ssr: true
-
+  }
 })
