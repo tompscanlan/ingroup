@@ -8,8 +8,10 @@ applications:
         build:
           commands:
             - npm run build
+            - ls -R .output
             - mkdir -p .output/compute/default
             - cp .output/server/index.mjs .output/compute/default/server.js
+            - ls -R .output/compute/default
       artifacts:
         baseDirectory: .output
         files:
