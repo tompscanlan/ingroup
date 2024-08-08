@@ -31,3 +31,28 @@ applications:
         baseDirectory: compute/default
         files:
           - '**/*'
+    customHeaders:
+      - pattern: '**/*'
+        headers:
+          - key: 'Cache-Control'
+            value: 'no-store'
+    buildSpec: |
+      version: 1
+      frontend:
+        phases:
+          build:
+            commands:
+              - '# Execute build commands'
+        artifacts:
+          baseDirectory: .output
+          files:
+            - '**/*'
+      backend:
+        phases:
+          build:
+            commands:
+              - '# Execute backend build commands'
+        artifacts:
+          baseDirectory: compute/default
+          files:
+            - '**/*'
