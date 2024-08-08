@@ -8,8 +8,7 @@ applications:
         build:
           commands:
             - npm run build
-            - mkdir -p .output/compute/default
-            - echo "export default function(event, context) { return require('../server/index.mjs').default.handler(event, context) }" > .output/compute/default/server.js
+            - npm run generate:serverjs
       artifacts:
         baseDirectory: .output
         files:
